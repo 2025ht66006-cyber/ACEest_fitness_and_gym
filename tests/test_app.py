@@ -1,4 +1,3 @@
-import json
 from app import app
 
 
@@ -29,6 +28,7 @@ def test_post_member_validation_error():
     payload = {"name": "Dave"}
     r = client.post("/members", json=payload)
     assert r.status_code == 400
+    assert "error" in r.json
 
 
 def test_get_metrics():
