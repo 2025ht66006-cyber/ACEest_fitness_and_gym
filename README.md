@@ -1,6 +1,5 @@
 # ACEest Fitness & Gym DevOps Assignment
 
-[![CI](https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym/actions/workflows/main.yml/badge.svg)](https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym/actions/workflows/main.yml)
 
 ## Project Overview
 This project implements a Flask-based fitness center API with a CI/CD workflow using GitHub Actions and Jenkins. It is built to satisfy the assignment criteria for:
