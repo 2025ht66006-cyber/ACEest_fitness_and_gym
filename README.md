@@ -1,66 +1,122 @@
 # ACEest Fitness & Gym DevOps Assignment
 
+[![CI-CD Pipeline](https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym/actions/workflows/main.yml/badge.svg)](https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym/actions/workflows/main.yml)
 
-## Project Overview
-This project implements a Flask-based fitness center API with a CI/CD workflow using GitHub Actions and Jenkins. It is built to satisfy the assignment criteria for:
-- Application Integrity
-- Version Control
-- Testing Coverage
-- Docker Efficiency
-- Pipeline Reliability
-- Documentation Clarity
+## Overview
+This project demonstrates a complete DevOps pipeline for a Flask-based fitness and gym management application. It covers modern best practices in version control, automated testing, containerization, and CI/CD using GitHub Actions and Jenkins.
+
+---
 
 ## Project Structure
-- `app.py` - Flask application entry point
-- `requirements.txt` - project dependencies
-- `tests/test_app.py` - pytest test suite
-- `pytest.ini` - pytest configuration with coverage checks
-- `Dockerfile` - multi-stage builder containerization
-- `.dockerignore` - files excluded from image context
-- `.github/workflows/main.yml` - CI/CD workflow
-- `Jenkinsfile` - Jenkins pipeline script
-- `README.md` - this documentation
+- `app.py` — Main Flask application
+- `requirements.txt` — Python dependencies
+- `tests/` — Pytest test suite
+- `Dockerfile` — Multi-stage Docker build
+- `.github/workflows/main.yml` — GitHub Actions pipeline
+- `Jenkinsfile` — Jenkins pipeline (for build/quality gate)
+- `README.md` — Project documentation
 
-## Local setup
-1. Clone
+---
+
+## Local Setup & Execution
+
+1. **Clone the repository**
    ```bash
-git clone https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym.git
-cd ACEest_fitness_and_gym
-```
-2. Create venv
+   git clone https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym.git
+   cd ACEest_fitness_and_gym
+   ```
+
+2. **Create and activate a virtual environment**
    ```bash
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-```
-3. Run app
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On Mac/Linux:
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
    ```bash
-python app.py
-```
-4. Access
-   - `http://localhost:5000/`
-   - `http://localhost:5000/members`
+   pip install -r requirements.txt
+   ```
 
-## Test commands
-- `pytest`
-- `pytest --cov=app --cov-fail-under=80`
+4. **Run the application**
+   ```bash
+   python app.py
+   ```
+   Visit [http://localhost:5000](http://localhost:5000) in your browser.
 
-## Docker commands
-- `docker build -t aceest-gym:latest .`
-- `docker run -p 5000:5000 aceest-gym:latest`
+---
 
-## Git workflow
-- `main`, `dev`, `feature/*`, `hotfix/*`
-- commit prefix: `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`
+## Running Tests
 
-## CI/CD
-- **GitHub Actions**: Triggers on push/PR to `main`/`dev`, runs lint, test (80% coverage), Docker build
-- **Jenkins**: Webhook-triggered, stages: Checkout, Install, Lint, Test, Docker Build
+- Run all tests:
+  ```bash
+  pytest
+  ```
+- Run tests with coverage (required: 80%+):
+  ```bash
+  pytest --cov=app --cov-fail-under=80
+  ```
 
-## Evaluation alignment
-- Application integrity: endpoint tests + sanity checks
-- VCS maturity: branch strategy + commit style
-- Testing coverage: `pytest --cov-fail-under=80`
-- Docker efficiency: multi-stage image + .dockerignore
-- Pipeline: lint + test + build in Actions
-- Documentation: this README + plan doc
+---
+
+## Docker Usage
+
+- **Build the Docker image:**
+  ```bash
+  docker build -t aceest-gym:latest .
+  ```
+- **Run the container:**
+  ```bash
+  docker run -p 5000:5000 aceest-gym:latest
+  ```
+
+---
+
+## CI/CD Pipelines
+
+### GitHub Actions
+- Triggers on every push and pull request to `main` and `dev`
+- Stages:
+  - Lint (flake8)
+  - Test (pytest with coverage)
+  - Docker build and validation
+
+### Jenkins
+- Pulls latest code from GitHub
+- Stages:
+  - Checkout
+  - Install dependencies
+  - Lint
+  - Test (with coverage)
+  - Docker build
+
+---
+
+## Branching & Version Control
+
+- `main`: Production-ready code
+- `dev`: Integration branch
+- `feature/*`: Feature branches
+- `hotfix/*`: Hotfixes
+
+Commits use conventional prefixes: `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`
+
+---
+
+## Evaluation Criteria Mapping
+
+- **Application Integrity:** Flask app with all required endpoints and logic
+- **VCS Maturity:** Structured commits, clear branching
+- **Testing Coverage:** Pytest suite, coverage enforced in CI
+- **Docker Efficiency:** Multi-stage build, minimal image
+- **Pipeline Reliability:** Jenkins and GitHub Actions, automated build/test
+- **Documentation Clarity:** This README covers all requirements
+
+---
+
+## Notes
+
+- Legacy scripts (Aceestver-*.py) are archived and not part of the main pipeline.
+- Only `app.py` and files in the root are used for CI/CD and deployment.
