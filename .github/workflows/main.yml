@@ -25,14 +25,14 @@ jobs:
           flake8 .
       - name: Run tests with coverage
         run: |
-          pytest
+          pytest --cov=app --cov-fail-under=80
 
   docker-build:
     needs: lint-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build Docke r image
+      - name: Build Docker image
         run: docker build -t aceest-gym:latest .
       - name: Validate running container
         run: |
