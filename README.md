@@ -1,5 +1,7 @@
 # ACEest Fitness & Gym DevOps Assignment
 
+[![CI](https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym/actions/workflows/main.yml/badge.svg)](https://github.com/2025ht66006-cyber/ACEest_fitness_and_gym/actions/workflows/main.yml)
+
 ## Project Overview
 This project implements a Flask-based fitness center API with a CI/CD workflow using GitHub Actions and Jenkins. It is built to satisfy the assignment criteria for:
 - Application Integrity
@@ -53,8 +55,8 @@ python app.py
 - commit prefix: `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`
 
 ## CI/CD
-- GitHub Actions in `.github/workflows/main.yml`
-- Jenkins pipeline to trigger builds from GitHub webhooks
+- **GitHub Actions**: Triggers on push/PR to `main`/`dev`, runs lint, test (80% coverage), Docker build
+- **Jenkins**: Webhook-triggered, stages: Checkout, Install, Lint, Test, Docker Build
 
 ## Evaluation alignment
 - Application integrity: endpoint tests + sanity checks
