@@ -7,6 +7,7 @@ This project demonstrates a DevOps workflow for a Flask-based fitness and gym ma
 
 ## Project Structure
 - `app.py` - main Flask application
+- `app_static.py` - serves both the Flask API backend and static frontend files
 - `requirements.txt` - Python dependencies
 - `tests/` - Pytest suite
 - `Dockerfile` - multi-stage Docker build for test and runtime images
@@ -45,6 +46,8 @@ python app.py
 ```
 
 The API starts on `http://localhost:5000`.
+
+Note: app_static.py serves both the Flask API backend and static frontend files (HTML, CSS, JS) from a single application, combining backend and frontend into one integrated app.
 
 ## Running Tests
 - Run lint:
